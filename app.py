@@ -32,12 +32,10 @@ with st.container():
         }
 
         result = summerize_text(payload=data)
-        st.session_state['output'] = result[0]['summary_text']
-
+        st.session_state['output'] = result
 
 if st.button("Summarize Text"):
-    t="Automated metrics provide quantitative measures of the quality and similarity of generated text compared to reference texts. These metrics are useful for benchmarking and comparing different models. Diversity metrics assess the variety and novelty of generated outputs."
-    st.header(f"Result:")
+    st.header("Result:")
     with st.container(border=True):
         if st.session_state['output']:
-            st.write(st.session_state['output'])
+            st.write(st.session_state['output'][0]['summary_text'])
